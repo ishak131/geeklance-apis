@@ -6,6 +6,10 @@ const ProjectSchema = new Schema<ProjectModelInterface>({
         type: String,
         required: true
     },
+    title: {
+        type: String,
+        required: true
+    },
     proposals: {
         type: [],
         of: String,
