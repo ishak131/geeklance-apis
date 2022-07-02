@@ -10,4 +10,5 @@ export default interface UserModelInterface {
     avatar: string,
     Synposis: string,
     proposals: Array<string>,
+    projects: Array<string>,
 }

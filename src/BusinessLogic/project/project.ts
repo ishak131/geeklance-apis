@@ -4,6 +4,7 @@ import BasicOperation from '../Basic/BasicOperations';
 import { Request, Response } from "express";
 import proposal from '../proposal/proposal';
 import user from '../user/user';
+import UserModel from '../../MongoSchema/user/userModel';
 
 class Project extends BasicOperation implements ProjectInterface {
     constructor(Model: any) {
@@ -34,7 +35,7 @@ class Project extends BasicOperation implements ProjectInterface {
             return res.sendStatus(400);
         }
     }
-    
+
     async addProposal(project_id: any, proposal_id: any): Promise<void> {
         try {
             this.Model.updateOne({ _id: project_id }, { $push: { proposals: [proposal_id] } }, function (err: any, result: any) {
@@ -46,6 +47,23 @@ class Project extends BasicOperation implements ProjectInterface {
             });
         } catch (error) {
             console.log(error);
+        }
+    }
+
+    async getManyModelsInOneUser(req: Request, res: Response): Promise<object> {
+        try {
+            const { _id } = req.params;
+            let selectedUser = await UserModel.findById(_id)
+            if (!selectedUser) {
+                return res.sendStatus(404);
+            }
+            const getModle = await this.Model.find({
+                '_id': { $in: selectedUser.projects }
+            });
+            if (getModle == null) return res.sendStatus(404);
+            return res.json({ getModle });
+        } catch (error) {
+            return res.sendStatus(400);
         }
     }
 

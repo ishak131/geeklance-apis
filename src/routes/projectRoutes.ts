@@ -36,9 +36,17 @@ projectRouter.get('/getOne/:_id', async (req: Request, res: Response): Promise<o
     }
 })
 
-projectRouter.get('/getAll/:_id', async (req: Request, res: Response): Promise<object> => {
+projectRouter.get('/getMany/:_id', async (req: Request, res: Response): Promise<object> => {
     try {
-        return project.getOneModelById(req, res)
+        return project.getManyModelsInOneUser(req, res)
+    } catch (error) {
+        return res.sendStatus(400);
+    }
+})
+
+projectRouter.get('/getAll/:limit', async (req: Request, res: Response): Promise<object> => {
+    try {
+        return project.getManyModels(req, res)
     } catch (error) {
         return res.sendStatus(400);
     }
