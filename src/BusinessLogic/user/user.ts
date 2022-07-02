@@ -17,7 +17,8 @@ class User extends BasicOperation implements UserInterface {
         this.deletePassword = this.deletePassword.bind(this);
         // this.resetChangePassword = this.resetChangePassword.bind(this);
     }
-   
+
+
 
     async addProposal(user_id: any, proposal_id: any): Promise<void> {
         try {
@@ -71,7 +72,10 @@ class User extends BasicOperation implements UserInterface {
     async checkEmailAndPhoneAvailabilty(req: Request, res: Response, next: NextFunction): Promise<void> {
         const { _id, email } = req.body;
         const user = await this.Model.exists({ _id: { $ne: _id }, email });
-        if (user && user._id !== _id) {
+        console.log(email);
+        console.log(user);
+        if (user) {
+            console.log(email);
             res.sendStatus(406);
         }
         else

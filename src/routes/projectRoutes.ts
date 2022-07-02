@@ -36,6 +36,14 @@ projectRouter.get('/getOne/:_id', async (req: Request, res: Response): Promise<o
     }
 })
 
+projectRouter.get('/getAll/:_id', async (req: Request, res: Response): Promise<object> => {
+    try {
+        return project.getOneModelById(req, res)
+    } catch (error) {
+        return res.sendStatus(400);
+    }
+})
 
 
-export { projectRouter};
+
+export { projectRouter };

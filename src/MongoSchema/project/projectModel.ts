@@ -10,6 +10,10 @@ const ProjectSchema = new Schema<ProjectModelInterface>({
         type: String,
         required: true
     },
+    category: {
+        type: String,
+        required: true
+    },
     proposals: {
         type: [],
         of: String,
@@ -22,6 +26,10 @@ const ProjectSchema = new Schema<ProjectModelInterface>({
     budget: {
         type: Number,
         required: true
+    },
+    date: {
+        type: Number,
+        default: Date.now()
     },
 })
 
