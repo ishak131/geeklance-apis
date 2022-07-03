@@ -7,5 +7,6 @@ export default interface ProposalModelInterface {
     secondName: String,
     jobTitle: String,
     avatar: String,
-    date: Number
+    date: Number,
+    isAcceptedate: Boolean
 }

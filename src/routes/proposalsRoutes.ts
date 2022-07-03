@@ -4,8 +4,10 @@ const proposalRouter = express.Router();
 
 proposalRouter.post('/create', async (req: Request, res: Response): Promise<object> => {
     try {
+        console.log(req.body);
         return proposal.createModel(req, res);
     } catch (error) {
+        console.log(error);
         return res.sendStatus(400);
     }
 })

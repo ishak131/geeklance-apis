@@ -67,7 +67,7 @@ class Project extends BasicOperation implements ProjectInterface {
         }
     }
 
-    
+
     async searchProjects(req: Request, res: Response): Promise<object> {
         try {
             let { searchText } = req.params
@@ -82,6 +82,17 @@ class Project extends BasicOperation implements ProjectInterface {
                 });
         } catch (error) {
             return res.json({ error })
+        }
+    }
+
+    async acceptProposal(req: Request, res: Response): Promise<void> {
+        try {
+            let { proposal_id, project_id, user_id } = req.body
+            this.Model.findByIdAndUpdate(project_id, {
+                acceptedProposal: proposal_id
+            }, { new: true })
+        } catch (error) {
+
         }
     }
 }

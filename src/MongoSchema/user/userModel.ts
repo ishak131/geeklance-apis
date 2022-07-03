@@ -69,6 +69,7 @@ const UserSchema = new Schema<UserModelInterface>({
         of: String,
         ref: "Project"
     },
+
 })
 
 const UserModel = model<UserModelInterface>('User', UserSchema);

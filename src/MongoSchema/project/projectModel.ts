@@ -31,6 +31,10 @@ const ProjectSchema = new Schema<ProjectModelInterface>({
         type: Number,
         default: Date.now()
     },
+    acceptedProposal: {
+        type: String,
+        ref: "User"
+    }
 })
 ProjectSchema.index({ '$**': 'text' });
 

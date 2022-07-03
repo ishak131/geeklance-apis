@@ -8,15 +8,15 @@ const ProposalSchema = new Schema<ProposalModelInterface>({
     },
     firstName: {
         type: String,
-        required: true
+        default: ""
     },
     secondName: {
         type: String,
-        required: true
+        default: ""
     },
     avatar: {
         type: String,
-        required: true
+        default: ""
     },
     jobTitle: {
         type: String,
@@ -38,6 +38,10 @@ const ProposalSchema = new Schema<ProposalModelInterface>({
         type: Number,
         default: Date.now()
     },
+    isAccepted: {
+        type: Boolean,
+        default: false
+    }
 })
 
 const ProposalModel = model<ProposalModelInterface>('Proposal', ProposalSchema);

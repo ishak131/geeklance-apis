@@ -48,7 +48,7 @@ class User extends BasicOperation implements UserInterface {
         }
     }
 
-    async addAppliedProject(user_id: any, project_id: any, proposal_id: any,): Promise<any> {
+    async addAppliedProject(user_id: any, project_id: any, proposal_id: any): Promise<any> {
         try {
             this.Model.updateOne({ _id: user_id }, { $push: { appliedProjects: [{ [project_id]: proposal_id }] } }, function (err: any, result: any) {
                 if (err) {
@@ -110,8 +110,6 @@ class User extends BasicOperation implements UserInterface {
 
         }
     }
-
-
 
 }
 
