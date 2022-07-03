@@ -13,7 +13,7 @@ userRouter.post('/create', user.checkEmailAndPhoneAvailabilty, user.bcryptPasswo
     }
 })
 
-userAuthorizedRouter.put('/edit', user.checkUserAbilityToEdit, user.checkEmailAndPhoneAvailabilty, async (req: Request, res: Response, next: NextFunction): Promise<object> => {
+userAuthorizedRouter.put('/edit', user.checkEmailAndPhoneAvailabilty, async (req: Request, res: Response, next: NextFunction): Promise<object> => {
     try {
         return user.EditModel(req, res);
     } catch (error) {

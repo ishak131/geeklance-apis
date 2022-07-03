@@ -86,7 +86,8 @@ class User extends BasicOperation implements UserInterface {
         try {
             const { _id, decodedToken } = req.body;
             const user = await UserModel.findById({ _id: decodedToken._id });
-            if (user && (_id === decodedToken._id)) {
+            console.log(user);
+            if (user) {
                 return next()
             }
             res.sendStatus(401)

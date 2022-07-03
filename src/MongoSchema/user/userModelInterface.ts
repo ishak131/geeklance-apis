@@ -8,7 +8,7 @@ export default interface UserModelInterface {
     email: string,
     password: string,
     avatar: string,
-    Synposis: string,
+    synopsis: string,
     proposals: Array<string>,
     projects: Array<object>,
 }

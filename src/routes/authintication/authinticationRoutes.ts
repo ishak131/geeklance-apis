@@ -13,7 +13,10 @@ authRouter.post('/login', async (req: Request, res: Response): Promise<object> =
 
 authRouter.post('/authinticate', authintication.authinticate, async (req: Request, res: Response, next: NextFunction): Promise<object> => {
     try {
-        return res.send(req.body.decodedToken)
+        return res.send({
+            decodedToken: req.body.decodedToken
+            , user: req.body.user
+        })
     } catch (error) {
         return res.status(400).send({ error });
     }

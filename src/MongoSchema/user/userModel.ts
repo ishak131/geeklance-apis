@@ -50,7 +50,7 @@ const UserSchema = new Schema<UserModelInterface>({
         type: String,
         default: ""
     },
-    Synopsis: {
+    synopsis: {
         type: String,
         default: ""
     },

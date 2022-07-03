@@ -3,6 +3,7 @@ import { NextFunction, Request, Response } from 'express'
 import UserModel from '../MongoSchema/user/userModel'
 import bcrypt from 'bcryptjs'
 import * as fs from 'fs'
+import user from '../BusinessLogic/user/user'
 
 class Authintication {
 
@@ -50,10 +51,15 @@ class Authintication {
             if (!token)
                 return res.sendStatus(401)
             const privateKey = this.getPrivateKey()
-            return jwt.verify(token, privateKey, async (error, decodedToken) => {
+            return jwt.verify(token, privateKey, async (error: any, decodedToken: any) => {
                 if (error)
                     return res.status(401).send({ error });
+                if (!decodedToken) {
+                    return res.status(400).send({ error })
+                }
+                let userInfo = await UserModel.findById(decodedToken._id)
                 req.body.decodedToken = decodedToken
+                req.body.user = userInfo
                 return next()
             })
         } catch (error) {
