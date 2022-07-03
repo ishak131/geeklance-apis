@@ -40,7 +40,7 @@ class Authintication {
         }
         // await UserModel.updateOne({ _id: user._id }, { resetPassword: "" });
         const token = this.createMyToken({ _id: user._id, email: user.email, phoneNumber: user.phoneNumber })
-        return res.send({ token })
+        return res.send({ token, user })
     }
 
     async authinticate(req: Request, res: Response, next: NextFunction): Promise<any> {

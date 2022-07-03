@@ -67,6 +67,23 @@ class Project extends BasicOperation implements ProjectInterface {
         }
     }
 
+    
+    async searchProjects(req: Request, res: Response): Promise<object> {
+        try {
+            let { searchText } = req.params
+            return this.Model.find({ $text: { $search: searchText } }).exec(
+                function (err: any,
+                    docs: any) {
+                    if (docs) {
+                        return res.json({ searchResult: docs })
+                    } else {
+                        return res.status(404).send('not found')
+                    }
+                });
+        } catch (error) {
+            return res.json({ error })
+        }
+    }
 }
 
 const project = new Project(ProjectModel);

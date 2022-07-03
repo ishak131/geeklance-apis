@@ -12,15 +12,19 @@ const UserSchema = new Schema<UserModelInterface>({
     },
     country: {
         type: String,
+        default: ""
     },
     gender: {
         type: String,
+        default: ""
     },
     birthDate: {
         type: String,
+        default: ""
     },
     phoneNumber: {
         type: String,
+        default: ""
     },
     email: {
         type: String,

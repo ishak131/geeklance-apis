@@ -52,6 +52,11 @@ projectRouter.get('/getAll/:limit', async (req: Request, res: Response): Promise
     }
 })
 
-
-
+projectRouter.get('/search/:searchText', async (req: Request, res: Response): Promise<object> => {
+    try {
+        return project.searchProjects(req, res)
+    } catch (error) {
+        return res.sendStatus(400);
+    }
+})
 export { projectRouter };

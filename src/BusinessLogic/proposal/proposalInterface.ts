@@ -1,2 +1,6 @@
 import BasicOprtationsInterface from "../Basic/BasicOperationsInterface";
-export default interface ProjectInterface extends BasicOprtationsInterface { }
+import { Request, Response } from "express";
+
+export default interface ProjectInterface extends BasicOprtationsInterface {
+    // searchProposals(req: Request, res: Response): Promise<object>
+}

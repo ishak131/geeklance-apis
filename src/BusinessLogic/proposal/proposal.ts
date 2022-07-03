@@ -34,7 +34,7 @@ class Proposal extends BasicOperation implements ProposalInterface {
             return [];
         }
     }
-}
 
+}
 const proposal = new Proposal(ProposalModel);
 export default proposal;

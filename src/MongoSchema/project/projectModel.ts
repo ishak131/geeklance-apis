@@ -32,6 +32,7 @@ const ProjectSchema = new Schema<ProjectModelInterface>({
         default: Date.now()
     },
 })
+ProjectSchema.index({ '$**': 'text' });
 
 const ProjectModel = model<ProjectModelInterface>('Project', ProjectSchema);
 export default ProjectModel

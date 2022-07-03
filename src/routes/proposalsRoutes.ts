@@ -18,4 +18,5 @@ proposalRouter.get('/getOne/:_id', async (req: Request, res: Response): Promise<
     }
 })
 
+
 export { proposalRouter };
