@@ -11,4 +11,6 @@ export default interface UserModelInterface {
     synopsis: string,
     proposals: Array<string>,
     projects: Array<object>,
+    chatsForAcceptedProposals: Array<string>,
+    chatsForAcceptedProjects: Array<string>,
 }

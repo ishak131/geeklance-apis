@@ -12,6 +12,15 @@ proposalRouter.post('/create', async (req: Request, res: Response): Promise<obje
     }
 })
 
+proposalRouter.post('/accept', async (req: Request, res: Response): Promise<object> => {
+    try {
+        return proposal.acceptProposal(req, res);
+    } catch (error) {
+        console.log(error);
+        return res.sendStatus(400);
+    }
+})
+
 proposalRouter.get('/getOne/:_id', async (req: Request, res: Response): Promise<object> => {
     try {
         return proposal.getOneModelById(req, res)

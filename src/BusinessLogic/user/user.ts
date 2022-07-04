@@ -5,6 +5,7 @@ import bcrypt from 'bcryptjs';
 import { ObjectId } from 'mongoose';
 // import mangeToken from '../mangeToken/mangeToken';
 import BasicOperation from '../Basic/BasicOperations';
+import ChatModel from '../../MongoSchema/chat/chatModel';
 // import SendEmail from '../../sendMessage/gmail/sendEmail';
 
 class User extends BasicOperation implements UserInterface {
@@ -15,12 +16,54 @@ class User extends BasicOperation implements UserInterface {
         this.checkEmailAndPhoneAvailabilty = this.checkEmailAndPhoneAvailabilty.bind(this);
         this.checkUserAbilityToEdit = this.checkUserAbilityToEdit.bind(this);
         this.deletePassword = this.deletePassword.bind(this);
+        this.addChatsForAcceptedProjects = this.addChatsForAcceptedProjects.bind(this);
+        this.addChatsForAcceptedProposals = this.addChatsForAcceptedProposals.bind(this);
         // this.resetChangePassword = this.resetChangePassword.bind(this);
     }
 
+    async addChatsForAcceptedProjects(user_id: any, chat_id: any, projectTitle: any): Promise<any> {
+        try {
+            await this.Model.updateOne({ _id: user_id }, {
+                $push: {
+                    chatsForAcceptedProjects: [{
+                        projectTitle,
+                        chat_id
+                    }]
+                }
+            }, function (err: any, result: any) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("result");
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
+    async addChatsForAcceptedProposals(user_id: any, chat_id: any, projectTitle: any): Promise<any> {
+        try {
+            await this.Model.updateOne({ _id: user_id }, {
+                $push: {
+                    chatsForAcceptedProposals: [{
+                        projectTitle,
+                        chat_id
+                    }]
+                }
+            }, function (err: any, result: any) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("result");
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
-    async addProposal(user_id: any, proposal_id: any): Promise<void> {
+    async addProposal(user_id: any, proposal_id: any): Promise<any> {
         try {
             this.Model.updateOne({ _id: user_id }, { $push: { proposals: [proposal_id] } }, function (err: any, result: any) {
                 if (err) {

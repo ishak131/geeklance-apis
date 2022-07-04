@@ -69,6 +69,16 @@ const UserSchema = new Schema<UserModelInterface>({
         of: String,
         ref: "Project"
     },
+    chatsForAcceptedProposals: {
+        type: [],
+        of: String,
+        ref: "Chat"
+    },
+    chatsForAcceptedProjects: {
+        type: [],
+        of: String,
+        ref: "Chat"
+    },
 
 })
 
