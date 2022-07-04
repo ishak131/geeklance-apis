@@ -10,6 +10,7 @@ import authRouter from './src/routes/authintication/authinticationRoutes';
 import authintication from './src/authintication/authintication';
 import { projectRouter } from './src/routes/projectRoutes';
 import { proposalRouter } from './src/routes/proposalsRoutes';
+import { chatRouter } from './src/routes/chatRouter';
 
 require('dotenv/config')
 
@@ -26,6 +27,7 @@ app.use(authintication.authinticate)
 app.use('/user', userAuthorizedRouter)
 app.use('/project', projectRouter)
 app.use('/proposal', proposalRouter)
+app.use('/chat', chatRouter)
 
 //#endregion//////////////////////////////////////////////
 

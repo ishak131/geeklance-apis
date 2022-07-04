@@ -19,7 +19,6 @@ chatRouter.put('/edit', async (req: Request, res: Response, next: NextFunction):
 })
 
 
-
 chatRouter.delete('/delete/:_ids', async (req: Request, res: Response): Promise<object> => {
     try {
         return chat.deleteModelsById(req, res);

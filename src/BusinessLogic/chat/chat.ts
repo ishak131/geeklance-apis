@@ -1,6 +1,8 @@
 import BasicOperation from '../Basic/BasicOperations';
 import ChatModel from '../../MongoSchema/chat/chatModel';
 import ChatInterface from './chatInterface';
+import { Request, Response } from "express";
+import UserModel from '../../MongoSchema/user/userModel';
 
 class Chat extends BasicOperation implements ChatInterface {
 
@@ -33,6 +35,25 @@ class Chat extends BasicOperation implements ChatInterface {
             console.log(error);
         }
     }
+
+    // async getManyChatsInOneUser(req: Request, res: Response): Promise<object> {
+    //     try {
+    //         const { _id } = req.params;
+    //         let selectedUser = await UserModel.findById(_id)
+    //         if (!selectedUser) {
+    //             return res.sendStatus(404);
+    //         }
+    //         const chatsForAcceptedProjects = await this.Model.find({
+    //             '_id': { $in: selectedUser.chatsForAcceptedProjects }
+    //         });
+    //         const chatsForAcceptedProposals = await this.Model.find({
+    //             '_id': { $in: selectedUser.chatsForAcceptedProjects }
+    //         });
+    //         return res.json({ chatsForAcceptedProposals, chatsForAcceptedProjects });
+    //     } catch (error) {
+    //         return res.sendStatus(400);
+    //     }
+    // }
 
 }
 
